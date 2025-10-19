@@ -1,26 +1,26 @@
 You are a senior architect.
 
-Refactor the **Pre-Registration and Registration Flows** in Azure AD B2C custom policies. Functions involved:
+Refactor **User Management Flows** for modification, disable, and delete users. Functions involved:
 
-- PreRegisterUser
-- RegisterUser
-- SendOtpByEmail
-- ActivateMfa
 - UpdateUserProperties
+- DisableUser
+- DeleteUser
+- GetUserDataFromCore
+- SendOtpByEmail (if needed for verification)
 
 **Task:** Refactor the entire flow into a **hexagonal architecture** using **Spring Cloud Function** and the rules in `COPILOT_REFACTOR_GUIDELINES.md`.
 
 Requirements:
 - Each function becomes a Spring Cloud Function handler.
-- Business logic goes into application services / ports.
-- External calls (Graph API, SMTP, Core API) moved to adapters.
-- OpenAPI documentation for all HTTP-exposed handlers.
-- Logging, correlation ID, and global exception handling included.
-- Generate DTOs for all request/responses.
-- Identify shared logic and interfaces for ports.
+- Business logic moved to application services / ports.
+- Graph API, SMTP, Core API calls moved to adapters.
+- OpenAPI documentation for all handlers.
+- Logging, correlation ID, exception handling applied.
+- DTOs for all payloads.
+- Identify shared logic and define interfaces for ports.
 
 Output:
 - Table mapping functions → Handler / Port / Adapter / DTO
-- Suggested orchestrator services
+- Suggested orchestrators
 - Adapters and responsibilities
-- Call sequence of the registration flow
+- Flow sequence diagram / description
